@@ -38,4 +38,32 @@ function validateForm() {
 
     return false;
 }
-</script>
+</scriptscript>
+// STORED DETAILS (from registration)
+let storedUsername = "nare_345";
+let storedPassword = "Nare@098";
+
+// LOGIN FUNCTION
+function login() {
+    let username = document.getElementById("loginUsername").value;
+    let password = document.getElementById("loginPassword").value;
+    let message = document.getElementById("message");
+
+    if (username === storedUsername && password === storedPassword) {
+        message.innerHTML = "Welcome Nare Thamaga, it is great to see you again.";
+        message.style.color = "green";
+    } else {
+        message.innerHTML = "Username or password incorrect, please try again.";
+        message.style.color = "red";
+    }
+}
+</script>>
+<h2>Login</h2>
+
+<label>Username:</label><br>
+<input type="text" id="loginUsername"><br><br>
+
+<label>Password:</label><br>
+<input type="password" id="loginPassword"><br><br>
+
+<button onclick="login()">Login</button>

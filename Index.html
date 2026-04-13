@@ -1,1 +1,41 @@
+<script>
+function validateForm() {
+    let username = document.getElementById("username").value;
+    let password = document.getElementById("password").value;
+    let phone = document.getElementById("phone").value;
+    let message = document.getElementById("message");
 
+    // USERNAME VALIDATION
+    if (!username.includes("_") || username.length > 8) {
+        message.innerHTML = "Username is not correctly formatted; please ensure that your username contains an underscore and is no more than five characters in length.";
+        message.style.color = "red";
+        return false;
+    }
+
+    // PASSWORD VALIDATION
+    let hasCapital = /[A-Z]/.test(password);
+    let hasNumber = /[0-9]/.test(password);
+    let hasSpecial = /[!@#$%^&*]/.test(password);
+
+    if (password.length < 8 || !hasCapital || !hasNumber || !hasSpecial) {
+        message.innerHTML = "Password is not correctly formatted; please ensure that the password contains at least eight characters, a capital letter, a number, and a special character.";
+        message.style.color = "red";
+        return false;
+    }
+
+    // 📱 PHONE REGEX VALIDATION
+    // Must start with + and country code, followed by max 10 digits
+    let phoneRegex = /^\+\d{1,3}\d{10}$/;
+<input type="text" id="phone" value="+27828748000">
+    if (!phoneRegex.test(phone)) {
+        message.innerHTML = "Cell phone number incorrectly formatted or does not contain international code.";
+        message.style.color = "red";
+        return false;
+    }
+
+    message.innerHTML = "Username, Password and Cell phone number successfully captured.";
+    message.style.color = "green";
+
+    return false;
+}
+</script>
